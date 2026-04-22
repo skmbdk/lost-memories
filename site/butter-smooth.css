@@ -1,0 +1,55 @@
+:root {
+  --lm-butter-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --lm-butter-fast: 220ms;
+  --lm-butter-base: 380ms;
+  --lm-butter-slow: 620ms;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+video,
+canvas,
+svg,
+figure,
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+  backface-visibility: hidden;
+}
+
+[class*="transition"],
+[style*="transition"],
+[style*="transform"],
+[style*="opacity"] {
+  will-change: transform, opacity;
+  transition-timing-function: var(--lm-butter-ease) !important;
+}
+
+button,
+a,
+[role="button"] {
+  transition-property: transform, opacity, filter;
+  transition-duration: var(--lm-butter-fast);
+  transition-timing-function: var(--lm-butter-ease);
+}
+
+.butter-smooth-ready [style*="transform"] {
+  transform-style: preserve-3d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
